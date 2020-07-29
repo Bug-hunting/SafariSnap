@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "161798964085",
+    "firebase_url": "https://safari-snap-3c3fb.firebaseio.com",
+    "project_id": "safari-snap-3c3fb",
+    "storage_bucket": "safari-snap-3c3fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161798964085:android:5c31835ec66aaabc5fc93c",
+        "android_client_info": {
+          "package_name": "com.example.logindemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161798964085-in92pvcrs6kidjgaq156m3sjt1lkhqff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsZDIOz2JJZ2lyNhgeYr6TtrxXytFoGFw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161798964085-in92pvcrs6kidjgaq156m3sjt1lkhqff.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
