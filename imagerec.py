@@ -91,16 +91,20 @@ checkpoint_callback = ModelCheckpoint(filepath=model_weights_path+"/"+'best_mode
 model = Sequential()
 model.add(base_model)
 
+#add input layer and first convolution and pooling layer#
 model.add(InputLayer(input_shape=[200,200,3]))
 model.add(Conv2D(filters=32,kernel_size=5,strides=1,padding='same', activation='relu'))
 model.add(MaxPool2D(pool_size=5,padding='same'))
 
+#add second convolution layer and pooling layer#
 model.add(Conv2D(filters=50,kernel_size=5,strides=1,padding='same', activation='relu'))
 model.add(MaxPool2D(pool_size=5,padding='same'))
 
+#add third convolution layer and pooling layer#
 model.add(Conv2D(filters=80,kernel_size=5,strides=1,padding='same', activation='relu'))
 model.add(MaxPool2D(pool_size=5,padding='same'))
 
+#establish neural network layers#
 model.add(Dropout(0.25))
 model.add(Flatten())
 model.add(Dense(512,activation='relu'))
@@ -117,7 +121,7 @@ model.summary()
 
 #establish plot for test data#
 fig = plt.figure(figsize=(14, 14))
-
+#run testing phase going through first 30 images in the testing image set#
 for cnt, data, in enumerate(testing_images[10:40]):
     
     y = fig.add_subplot(6, 5, cnt+1)
@@ -138,7 +142,7 @@ for cnt, data, in enumerate(testing_images[10:40]):
     elif np.argmax(model_out) == 5:
         str_label='wolf'
         
-#plots test output from neural network model post training for visual check of accuracy#
+#plot test output from neural network model post training for visual check of accuracy#
     y.imshow(img, cmap='gray')
     plt.title(str_label)
     print(str_label)
