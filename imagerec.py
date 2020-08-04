@@ -148,7 +148,7 @@ for cnt, data, in enumerate(testing_images[10:40]):
     print(str_label)
     y.axes.get_xaxis().set_visible(False)
     y.axes.get_yaxis().set_visible(False)
-    plt.show()
+plt.show()
 #convert model to tflite format for use in android studio#
 converter = tf.lite.TFLiteConverter.from_keras_model(model)
 tflite_model = converter.convert()
