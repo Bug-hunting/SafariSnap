@@ -1,7 +1,4 @@
-package com.example.logindemo;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.Safari_Snap.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,13 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.Safari_Snap.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
 
 
 public class signup extends AppCompatActivity {
@@ -37,41 +38,36 @@ public class signup extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance(); //initializing the Firebase auth
 
 
-
-
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(validate_user_info())
-                {
+                if (validate_user_info()) {
+
                     // .trim() removes white spaces from user inputed text
                     String user_email = email.getText().toString().trim();
                     String user_pwd = pwd.getText().toString().trim();
 
                     //uploading data to database
-                    mAuth.createUserWithEmailAndPassword(user_email,user_pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    mAuth.createUserWithEmailAndPassword(user_email, user_pwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
 
-                            if (task.isSuccessful())
-                            {
+                            if (task.isSuccessful()) {
                                 Toast.makeText(signup.this, "Registration Successful", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(signup.this,MainActivity.class)); //redirect user to login page after successful account creation
-                            }
-                            else
-                            {
+                                startActivity(new Intent(signup.this, MainActivity.class)); //redirect user to login page after successful account creation
+                            } else {
+                                //checking if an account with email already exists
+                                String errorCode = ((FirebaseAuthException) task.getException()).getErrorCode();
+
+                                switch (errorCode) {
+                                    case "ERROR_EMAIL_ALREADY_IN_USE":
+                                        Toast.makeText(signup.this, "Email in use", Toast.LENGTH_SHORT).show();
+                                }
                                 Toast.makeText(signup.this, "Registration Failed!", Toast.LENGTH_SHORT).show();
                             }
-
                         }
                     });
-
-
-
-
                 }
-
-
             }
         });
 
@@ -93,9 +89,8 @@ public class signup extends AppCompatActivity {
         email = findViewById(R.id.suemailid);
         pwd = findViewById(R.id.supassword);
 
-
         submit = findViewById(R.id.joinus);
-        back_button = findViewById(R.id.tvUserLogin);
+        back_button = findViewById(R.id.back__button_password);
     }
 
     //The function checks if all the field have been filled
@@ -106,13 +101,12 @@ public class signup extends AppCompatActivity {
         String emailid = email.getText().toString();
         String password = pwd.getText().toString();
 
-        if(name.isEmpty() || emailid.isEmpty() || password.isEmpty() )
-        {
+        if (name.isEmpty() || emailid.isEmpty() || password.isEmpty()) {
             //show notification to enter all details
-            Toast.makeText(this,"Incomplete information", Toast.LENGTH_SHORT).show();
-        }
-        else
-        {
+            Toast.makeText(this, "Incomplete information", Toast.LENGTH_SHORT).show();
+        } else if (password.length() < 6) {
+            Toast.makeText(this, "Enter a password of more than 6 character", Toast.LENGTH_SHORT).show();
+        } else {
             result = true;
         }
         return result;

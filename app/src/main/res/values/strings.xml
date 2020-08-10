@@ -3,6 +3,9 @@
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="classification_fragment">classification_fragment</string>
+
+    <string name="intent_message">intent_message</string>
 
 
 </resources>

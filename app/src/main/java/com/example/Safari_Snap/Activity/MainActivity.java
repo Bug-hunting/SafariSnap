@@ -1,7 +1,4 @@
-package com.example.logindemo;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.Safari_Snap.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +9,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.Safari_Snap.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         if( user != null)
         {
             finish(); // completes the current activity
-            startActivity(new Intent(MainActivity.this,SecondActivity.class)); // redirects directly to homepage
+            startActivity(new Intent(MainActivity.this, NavigationActivity.class)); // redirects directly to homepage
         }
 
         //when login button is press
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
                 validate(Name.getText().toString(),Password.getText().toString());
             }
         });
-
 
         //when sign up text is press
         signup.setOnClickListener((new View.OnClickListener() {
@@ -91,39 +91,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //creating function to check password
-    private void validate(String userName,String userPassword)
-    {
+    //creating function to check user fields
+    private void validate(String userName, String userPassword) {
+        if (userName.isEmpty() || userPassword.isEmpty()) {
+            Toast.makeText(this, "Enter Login Information", Toast.LENGTH_SHORT).show();
+        } else {
 
-        if(userName.isEmpty() || userPassword.isEmpty())
-        {
-            Toast.makeText(this,"Enter Login Information", Toast.LENGTH_SHORT).show();
-        }
-        else
-            {
+            progressDialog.setMessage("Connecting to server");
+            progressDialog.show();
 
-                progressDialog.setMessage("Connecting to server");
-                progressDialog.show();
+            //going to database
+            firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    progressDialog.dismiss(); //close the dialog after completion
 
-                //going to database
-                firebaseAuth.signInWithEmailAndPassword(userName, userPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss(); //close the dialog after completion
-
-                        if (task.isSuccessful())
-                        {
-                            startActivity(new Intent(MainActivity.this, SecondActivity.class)); // redirects directly to homepage
-                            Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show(); //alerts user for failed login
-                        }
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show(); //alerts user for failed login
-                        }
+                    if (task.isSuccessful()) {
+                        startActivity(new Intent(MainActivity.this, NavigationActivity.class)); // redirects directly to homepage
+                        Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show(); //alerts user for failed login
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Login Failed", Toast.LENGTH_SHORT).show(); //alerts user for failed login
                     }
-                });
-            }
-
+                }
+            });
+        }
 
     }
 
