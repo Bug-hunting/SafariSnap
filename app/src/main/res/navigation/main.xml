@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/HomeScreen">
+
+    <fragment
+        android:id="@+id/HomeScreen"
+        android:name="com.example.Safari_Snap.Fragments.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/home_fragment" />
+
+
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="com.example.Safari_Snap.Fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/profile_fragment" />
+
+    <fragment
+        android:id="@+id/statsScreen"
+        android:name="com.example.Safari_Snap.Fragments.StatsFragment"
+        android:label="Statistics"
+        tools:layout="@layout/fragment_stats" />
+
+    <fragment
+        android:id="@+id/aboutScreen"
+        android:name="com.example.Safari_Snap.Fragments.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/about_fragment" />
+
+
+    <fragment
+        android:id="@+id/ResultScreen"
+        android:name="com.example.Safari_Snap.Fragments.ResultFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_result" />
+
+    <fragment
+        android:id="@+id/InfoScreen"
+        android:name="com.example.Safari_Snap.Fragments.ResultFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_result" />
+
+</navigation>

@@ -1,0 +1,6 @@
+antelope
+bobcat
+buffalo
+chimpanzee
+rhinoceros
+wolf
