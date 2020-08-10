@@ -41,6 +41,7 @@
             android:paddingEnd="15dp"
             android:textColorHint="@color/black"
             android:hint="Email"
+            android:textColor="@color/black"
             android:inputType="textPersonName" />
 
 
@@ -56,6 +57,7 @@
             android:layout_gravity="center"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:hint="@string/password"
             android:inputType="textPassword"

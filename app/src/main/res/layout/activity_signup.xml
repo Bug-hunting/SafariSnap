@@ -57,6 +57,7 @@
             android:inputType="textPersonName"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <EditText
@@ -71,6 +72,7 @@
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <EditText
@@ -85,6 +87,7 @@
             android:inputType="textPassword"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/black" />
 
         <Button
