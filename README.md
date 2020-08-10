@@ -28,6 +28,20 @@ The machine learning component has been tested using Spyder IDE which is **heavi
 
 ```/model``` is where the tflite and h5 models are stored. Note the code will compile an ```.h5``` after each iteration, this is due to the low number of iterations and use of a pretrained model. 
 
+# Installation and Setup Instructions for Android Studio
+Install Android studio on your system
+To set up the virtual device
+Click on open AVD Manager> Create Virtual Device >select phone > select device name > press next >download api level 24 (System Image = Nougat) > finish
+
+To run the application:
+Download the github project.
+Open android studio > open an existing android studio project > go to the location where you downloaded the project > in the directory you will see a android icon (green alien) > select the project name SafariSnap-master > press ok
+
+Wait for the build gradle to finish. Once it completes loading the project >select you android emulator device and press the green arrow to run.
+
+For first time users you have to create a new account in order to login and use the application functionality.
+
+
 ## Recommended specifications:
 * Ryzen 5 3400g or better
 * 16gb ram
