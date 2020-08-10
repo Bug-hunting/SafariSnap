@@ -75,6 +75,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             switch (requestCode) {
                 case CAMERA_REQUEST_CODE: {
                     photo = (Bitmap) Objects.requireNonNull(Objects.requireNonNull(data).getExtras()).get("data");
+                    photo = photo.copy(Bitmap.Config.ARGB_8888, true); //changing incoming image format to ARGB_888
                     photo = rotateImage(photo, 90); // overwrites the current bitmap with the rotated image
 
                     processData();
