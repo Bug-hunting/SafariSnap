@@ -43,13 +43,13 @@ For first time users you have to create a new account in order to login and use 
 
 
 ## Recommended specifications:
-* Ryzen 5 3400g or better
+* A processor capable of AVX instructions (confirmed supported on the Ryzen 5 3000 series)
 * 16gb ram
 * Windows 10 operating system
-* //put storage here//
+* At least 200 megs free on disk.
 
 ***Note:** These are not neccessarily the minimum specifications, but what the code was tested on. Specifications lower than these will increase the time per training session, while an Nvidia GPU will decrease resource usage.*
 
 To run ```imagerec.py``` in Spyder after all extensions have been installed correctly simply locate the large green play button icon in the tool bar on the upper left of the screen and click it.
 
-The model will run for 30 iterations, compile an ```.h5``` file each iteration, and then print a random selection of 30 testing images with the titles, as assigned by the Neural Network model, which is used to check for functional accuracy, it will then generate a ```.tflite``` model for use in Android and other mobile applications.
+The model will run for 30 iterations, compile an ```.h5``` file each iteration, and then print a random selection of 30 testing images with the titles that are assigned by the Neural Network model, which is used to check for functional accuracy, it will then generate a ```.tflite``` model for use in Android and other mobile applications.
